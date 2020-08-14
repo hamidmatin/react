@@ -51,9 +51,9 @@ class App extends Component {
     this.setState(newState);
   };
 
-  changeLastNameHandler = (e) =>{
+  changeLastNameHandler = (index, lastName) =>{
     const newState = {...this.state};
-    newState.studentList[0].lastName = 'Matin';
+    newState.studentList[index].lastName = lastName;
     this.setState(newState);
   }
 
@@ -70,7 +70,7 @@ class App extends Component {
           lastName={this.state.studentList[0].lastName}
           tel={this.state.studentList[0].tel}
           email={this.state.studentList[0].email}
-          click = {this.changeLastNameHandler}
+          click = {this.changeLastNameHandler.bind(this, 0, 'Matin')}
         />
         <hr />
         <Student
@@ -78,6 +78,7 @@ class App extends Component {
           lastName={this.state.studentList[1].lastName}
           tel={this.state.studentList[1].tel}
           email={this.state.studentList[1].email}
+          click = {this.changeLastNameHandler.bind(this, 1, 'Izadi')}
         />
         <hr />
         <Student
@@ -85,6 +86,7 @@ class App extends Component {
           lastName={this.state.studentList[2].lastName}
           tel={this.state.studentList[2].tel}
           email={this.state.studentList[2].email}
+          click = {()=>this.changeLastNameHandler(2, 'Shohpouri')}
         />
         <hr />
         <Student
