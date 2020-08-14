@@ -15,6 +15,28 @@ class App extends Component {
           lastName: 'Doroodian',
           tel: '5646545',
           email: 'sdsj@skdhs.xc',
+          courses:[
+            {
+              courseId: "it-1",
+              courseName: "Web Design 1",
+              courseDuration: 70
+            },
+            {
+              courseId: "it-2",
+              courseName: "Web Design 2",
+              courseDuration: 58
+            },
+            {
+              courseId: "it-3",
+              courseName: "Web Design 3",
+              courseDuration: 50
+            },
+            {
+              courseId: "it-4",
+              courseName: "React JS",
+              courseDuration: 50
+            },
+          ]
         },
         {
           id: '2',
@@ -22,6 +44,23 @@ class App extends Component {
           lastName: 'Shapouri',
           tel: '5646545',
           email: 'sdsj@skdhs.xc',
+          courses:[            
+            {
+              courseId: "it-2",
+              courseName: "Web Design 2",
+              courseDuration: 58
+            },
+            {
+              courseId: "it-3",
+              courseName: "Web Design 3",
+              courseDuration: 50
+            },
+            {
+              courseId: "it-4",
+              courseName: "React JS",
+              courseDuration: 50
+            },
+          ]
         },
         {
           id: '3',
@@ -29,6 +68,18 @@ class App extends Component {
           lastName: 'Hashemi',
           tel: '5646545',
           email: 'sdsj@skdhs.xc',
+          courses:[            
+            {
+              courseId: "it-2",
+              courseName: "Web Design 2",
+              courseDuration: 58
+            },            
+            {
+              courseId: "it-4",
+              courseName: "React JS",
+              courseDuration: 50
+            },
+          ]
         },
         {
           id: '4',
@@ -36,6 +87,23 @@ class App extends Component {
           lastName: 'Mohammadi',
           tel: '5646545',
           email: 'sdsj@skdhs.xc',
+          courses:[            
+            {
+              courseId: "it-2",
+              courseName: "Web Design 2",
+              courseDuration: 58
+            },
+            {
+              courseId: "it-3",
+              courseName: "Web Design 3",
+              courseDuration: 50
+            },
+            {
+              courseId: "it-4",
+              courseName: "React JS",
+              courseDuration: 50
+            },
+          ]
         },
         {
           id: '5',
@@ -43,6 +111,23 @@ class App extends Component {
           lastName: 'Vahedi',
           tel: '4654654654',
           email: 'afdsds@sdsd.xc',
+          courses:[            
+            {
+              courseId: "it-2",
+              courseName: "Web Design 2",
+              courseDuration: 58
+            },
+            {
+              courseId: "it-3",
+              courseName: "Web Design 3",
+              courseDuration: 50
+            },
+            {
+              courseId: "it-4",
+              courseName: "React JS",
+              courseDuration: 50
+            },
+          ]
         },
       ],
     };
@@ -57,11 +142,30 @@ class App extends Component {
   };
 
   changeLastNameHandler = (id, lastName) => {
-    const newState = { ...this.state };
-    const index =  newState.studentList.findIndex((student)=> student.id === id);
-    newState.studentList[index].lastName = lastName;
-    this.setState(newState);
+    let result = window.confirm('Are you sure to UPDATE ?');
+    if (result) {
+      const newState = { ...this.state };
+      const index = newState.studentList.findIndex(
+        (student) => student.id === id
+      );
+      newState.studentList[index].lastName = lastName;
+      this.setState(newState);
+    }
   };
+
+  
+  deleteStudentHandler = (id) => {
+    let result = window.confirm('Are you sure to DELETE ?');
+    if (result) {
+      const newState = { ...this.state };
+      const index = newState.studentList.findIndex(
+        (student) => student.id === id
+      );
+      newState.studentList.splice(index, 1)
+      this.setState(newState);
+    }
+  };
+
 
   render() {
     return (
@@ -79,7 +183,9 @@ class App extends Component {
               lastName={student.lastName}
               tel={student.tel}
               email={student.email}
-              click = {()=>this.changeLastNameHandler(student.id, 'Shohpouri')}
+              courses={student.courses}
+              click={() => this.changeLastNameHandler(student.id, 'Shohpouri')}
+              delete={() => this.deleteStudentHandler(student.id)}
             />
           );
         })}
