@@ -7,57 +7,62 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state =  {
-      studentList : [
+    this.state = {
+      studentList: [
         {
+          id: '1',
           firstName: 'Shayan',
           lastName: 'Doroodian',
           tel: '5646545',
           email: 'sdsj@skdhs.xc',
         },
         {
+          id: '2',
           firstName: 'Masoud',
           lastName: 'Shapouri',
           tel: '5646545',
           email: 'sdsj@skdhs.xc',
         },
         {
+          id: '3',
           firstName: 'Sadegh',
           lastName: 'Hashemi',
           tel: '5646545',
           email: 'sdsj@skdhs.xc',
         },
         {
+          id: '4',
           firstName: 'Rasoul',
           lastName: 'Mohammadi',
           tel: '5646545',
           email: 'sdsj@skdhs.xc',
         },
         {
+          id: '5',
           firstName: 'Mohammad',
           lastName: 'Vahedi',
           tel: '4654654654',
           email: 'afdsds@sdsd.xc',
         },
-      ]
-    }
+      ],
+    };
   }
   changeNameHandler = (e) => {
     console.log(e);
 
     // this.state.studentList[0].firstName = 'sdss';
-    const newState = {...this.state};
+    const newState = { ...this.state };
     newState.studentList[0].firstName = 'Hamid';
     this.setState(newState);
   };
 
-  changeLastNameHandler = (index, lastName) =>{
-    const newState = {...this.state};
+  changeLastNameHandler = (id, lastName) => {
+    const newState = { ...this.state };
+    const index =  newState.studentList.findIndex((student)=> student.id === id);
     newState.studentList[index].lastName = lastName;
     this.setState(newState);
-  }
+  };
 
-  
   render() {
     return (
       <div className='center'>
@@ -65,45 +70,19 @@ class App extends Component {
         <button className='btn-change' onClick={this.changeNameHandler}>
           Change Name klhklhlkhl
         </button>
-        <Student
-          firstName={this.state.studentList[0].firstName}
-          lastName={this.state.studentList[0].lastName}
-          tel={this.state.studentList[0].tel}
-          email={this.state.studentList[0].email}
-          click = {this.changeLastNameHandler.bind(this, 0, 'Matin')}
-        />
-        <hr />
-        <Student
-          firstName={this.state.studentList[1].firstName}
-          lastName={this.state.studentList[1].lastName}
-          tel={this.state.studentList[1].tel}
-          email={this.state.studentList[1].email}
-          click = {this.changeLastNameHandler.bind(this, 1, 'Izadi')}
-        />
-        <hr />
-        <Student
-          firstName={this.state.studentList[2].firstName}
-          lastName={this.state.studentList[2].lastName}
-          tel={this.state.studentList[2].tel}
-          email={this.state.studentList[2].email}
-          click = {()=>this.changeLastNameHandler(2, 'Shohpouri')}
-        />
-        <hr />
-        <Student
-          firstName={this.state.studentList[3].firstName}
-          lastName={this.state.studentList[3].lastName}
-          tel={this.state.studentList[3].tel}
-          email={this.state.studentList[3].email}
-        />
-        <hr />
-        <Student
-          firstName={this.state.studentList[4].firstName}
-          lastName={this.state.studentList[4].lastName}
-          tel={this.state.studentList[4].tel}
-          email={this.state.studentList[4].email}
-        />
-        <hr />
-        
+
+        {this.state.studentList.map((student) => {
+          return (
+            <Student
+              key={student.id}
+              firstName={student.firstName}
+              lastName={student.lastName}
+              tel={student.tel}
+              email={student.email}
+              click = {()=>this.changeLastNameHandler(student.id, 'Shohpouri')}
+            />
+          );
+        })}
       </div>
     );
   }
