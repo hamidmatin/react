@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Axios from "axios";
+
 import Student from "./components/student/Student";
 import Pagination from "./components/pagination/Pagination";
 
@@ -6,132 +8,145 @@ import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {
+  studentList = null;
   constructor(props) {
     super(props);
 
-    this.studentList = [
-      {
-        id: "1",
-        firstName: "Shayan",
-        lastName: "Doroodian",
-        tel: "5646545",
-        email: "sdsj@skdhs.xc",
-        courses: [
-          {
-            courseId: "it-1",
-            courseName: "Web Design 1",
-            courseDuration: 70,
-          },
-          {
-            courseId: "it-2",
-            courseName: "Web Design 2",
-            courseDuration: 58,
-          },
-          {
-            courseId: "it-3",
-            courseName: "Web Design 3",
-            courseDuration: 50,
-          },
-          {
-            courseId: "it-4",
-            courseName: "React JS",
-            courseDuration: 50,
-          },
-        ],
-      },
-      {
-        id: "2",
-        firstName: "Masoud",
-        lastName: "Shapouri",
-        tel: "5646545",
-        email: "sdsj@skdhs.xc",
-        courses: [
-          {
-            courseId: "it-2",
-            courseName: "Web Design 2",
-            courseDuration: 58,
-          },
-          {
-            courseId: "it-3",
-            courseName: "Web Design 3",
-            courseDuration: 50,
-          },
-          {
-            courseId: "it-4",
-            courseName: "React JS",
-            courseDuration: 50,
-          },
-        ],
-      },
-      {
-        id: "3",
-        firstName: "Sadegh",
-        lastName: "Hashemi",
-        tel: "5646545",
-        email: "sdsj@skdhs.xc",
-        courses: [
-          {
-            courseId: "it-2",
-            courseName: "Web Design 2",
-            courseDuration: 58,
-          },
-          {
-            courseId: "it-4",
-            courseName: "React JS",
-            courseDuration: 50,
-          },
-        ],
-      },
-      {
-        id: "4",
-        firstName: "Rasoul",
-        lastName: "Mohammadi",
-        tel: "5646545",
-        email: "sdsj@skdhs.xc",
-        courses: [
-          {
-            courseId: "it-2",
-            courseName: "Web Design 2",
-            courseDuration: 58,
-          },
-          {
-            courseId: "it-3",
-            courseName: "Web Design 3",
-            courseDuration: 50,
-          },
-          {
-            courseId: "it-4",
-            courseName: "React JS",
-            courseDuration: 50,
-          },
-        ],
-      },
-      {
-        id: "5",
-        firstName: "Mohammad",
-        lastName: "Vahedi",
-        tel: "4654654654",
-        email: "afdsds@sdsd.xc",
-        courses: [
-          {
-            courseId: "it-2",
-            courseName: "Web Design 2",
-            courseDuration: 58,
-          },
-          {
-            courseId: "it-3",
-            courseName: "Web Design 3",
-            courseDuration: 50,
-          },
-          {
-            courseId: "it-4",
-            courseName: "React JS",
-            courseDuration: 50,
-          },
-        ],
-      },
-    ];
+    Axios.get("/Data/Students.json")
+      .then((response) => {
+        console.log(response);
+        this.studentList = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // this.studentList = [
+    //   {
+    //     id: "1",
+    //     firstName: "Shayan",
+    //     lastName: "Doroodian",
+    //     tel: "5646545",
+    //     email: "sdsj@skdhs.xc",
+    //     courses: [
+    //       {
+    //         courseId: "it-1",
+    //         courseName: "Web Design 1",
+    //         courseDuration: 70,
+    //       },
+    //       {
+    //         courseId: "it-2",
+    //         courseName: "Web Design 2",
+    //         courseDuration: 58,
+    //       },
+    //       {
+    //         courseId: "it-3",
+    //         courseName: "Web Design 3",
+    //         courseDuration: 50,
+    //       },
+    //       {
+    //         courseId: "it-4",
+    //         courseName: "React JS",
+    //         courseDuration: 50,
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     id: "2",
+    //     firstName: "Masoud",
+    //     lastName: "Shapouri",
+    //     tel: "5646545",
+    //     email: "sdsj@skdhs.xc",
+    //     courses: [
+    //       {
+    //         courseId: "it-2",
+    //         courseName: "Web Design 2",
+    //         courseDuration: 58,
+    //       },
+    //       {
+    //         courseId: "it-3",
+    //         courseName: "Web Design 3",
+    //         courseDuration: 50,
+    //       },
+    //       {
+    //         courseId: "it-4",
+    //         courseName: "React JS",
+    //         courseDuration: 50,
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     id: "3",
+    //     firstName: "Sadegh",
+    //     lastName: "Hashemi",
+    //     tel: "5646545",
+    //     email: "sdsj@skdhs.xc",
+    //     courses: [
+    //       {
+    //         courseId: "it-2",
+    //         courseName: "Web Design 2",
+    //         courseDuration: 58,
+    //       },
+    //       {
+    //         courseId: "it-4",
+    //         courseName: "React JS",
+    //         courseDuration: 50,
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     id: "4",
+    //     firstName: "Rasoul",
+    //     lastName: "Mohammadi",
+    //     tel: "5646545",
+    //     email: "sdsj@skdhs.xc",
+    //     courses: [
+    //       {
+    //         courseId: "it-2",
+    //         courseName: "Web Design 2",
+    //         courseDuration: 58,
+    //       },
+    //       {
+    //         courseId: "it-3",
+    //         courseName: "Web Design 3",
+    //         courseDuration: 50,
+    //       },
+    //       {
+    //         courseId: "it-4",
+    //         courseName: "React JS",
+    //         courseDuration: 50,
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     id: "5",
+    //     firstName: "Mohammad",
+    //     lastName: "Vahedi",
+    //     tel: "4654654654",
+    //     email: "afdsds@sdsd.xc",
+    //     courses: [
+    //       {
+    //         courseId: "it-2",
+    //         courseName: "Web Design 2",
+    //         courseDuration: 58,
+    //       },
+    //       {
+    //         courseId: "it-3",
+    //         courseName: "Web Design 3",
+    //         courseDuration: 50,
+    //       },
+    //       {
+    //         courseId: "it-4",
+    //         courseName: "React JS",
+    //         courseDuration: 50,
+    //       },
+    //     ],
+    //   },
+    // ];
 
+    console.log(this.studentList);
+    let json = JSON.stringify(this.studentList);
+    console.log(json);
+    console.log(JSON.parse(json));
     this.currentPage = 1;
     this.pageItems = 2;
     this.createPageNumberElements();
