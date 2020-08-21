@@ -172,13 +172,12 @@ class App extends Component {
     }
   };
 
-
   showStudents = (currentPage) => {
     let from = (currentPage - 1) * this.pageItems;
     let end = from + this.pageItems;
     this.setState({ studentList: this.studentList.slice(from, end) });
   };
-  
+
   createPageNumberElements = () => {
     let pageNumber = "";
     for (
@@ -219,7 +218,6 @@ class App extends Component {
           currentPage={this.currentPage}
           changePageHandler={this.showStudents}
         />
-
       </div>
     );
   }

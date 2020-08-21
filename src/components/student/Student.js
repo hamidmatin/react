@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Course from '../course/Course';
+import Course from "../course/Course";
 
-import './Student.css';
+import "./Student.css";
 
 export default class Student extends Component {
   constructor(props) {
+    console.log("Student - Constructor");
     super(props);
     this.state = {
       toggleCours: false,
@@ -13,13 +14,25 @@ export default class Student extends Component {
   }
 
   toggleerCourseHandler = () => {
-      const newState = {...this.state};
-      newState.toggleCours = !newState.toggleCours;
+    const newState = { ...this.state };
+    newState.toggleCours = !newState.toggleCours;
 
-      this.setState(newState);
+    this.setState(newState);
   };
+  static getDerivedStateFromProps(props, state) {
+    console.log("props", props);
+    console.log("state", state);
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("shouldComponentUpdate - nextProps", nextProps);
+    console.log("shouldComponentUpdate - nextState", nextState);
+  }
 
+  componentDidMount() {
+    console.log("Student -componentDidMount");
+  }
   render() {
+    console.log("Student -Render");
     return (
       <div>
         <h2>

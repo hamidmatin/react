@@ -41,6 +41,7 @@ export default class Pagination extends Component {
     this.currentPage++;
     this.props.changePageHandler(this.currentPage);
   };
+
   render() {
     return (
       <div>
