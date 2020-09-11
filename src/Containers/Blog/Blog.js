@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react'
 import Users from '../../Components/Users/Users';
 
-
-export default class Blog extends Component {
-    render() {
-        return (
-            <div>
-                <Users />
-            </div>
-        )
-    }
+export default function Blog() {
+    return (
+        <div>
+            <Users />
+        </div>
+    )
 }
