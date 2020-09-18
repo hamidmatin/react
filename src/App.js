@@ -4,7 +4,6 @@ import Home from "./Home/Home";
 import About from "./About/About";
 import ContactUs from "./ContactUs/ContactUs";
 import Services from "./Services/Services";
-import WebDesign from "./Services/WebDesign/WebDesign";
 import "./App.css";
 
 function App() {
@@ -19,8 +18,7 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/about" component={About} />
         <Route path="/contactus" component={ContactUs} />
-        <Route path="/services" exact component={Services} />
-        <Route path="/services/webdesign" component={WebDesign} />
+        <Route path="/services" component={Services} />        
       </Switch>
     </BrowserRouter>
   );
