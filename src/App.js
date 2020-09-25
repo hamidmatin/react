@@ -13,12 +13,13 @@ function App() {
       <NavLink to="/about">About</NavLink>
       <NavLink to="/contactus">Contact Us</NavLink>
       <NavLink to="/services">Services</NavLink>
-
+      
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/about" component={About} />
         <Route path="/contactus" component={ContactUs} />
         <Route path="/services" component={Services} />        
+        
       </Switch>
     </BrowserRouter>
   );
