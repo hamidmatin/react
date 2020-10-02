@@ -1,24 +1,25 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Nav from "./component/nav/Nav";
-import MainFooter from "./component/footer/MainFooter";
-import Home from "./component/Page/Home";
-import Contact from "./component/Page/Contact";
-
+import Nav from "./component/Nav";
+import Home from './component/Home'
+import Posts from './component/Posts'
+import Post from './component/Post';
 
 function App() {
   return (
     <>
-      {/* <Route component={Nav} /> */}      
       <Nav/>
-
+    
       <Switch>
-        <Route path="/Contact" exact component={Contact} />
-        <Route path="/" component={Home} />
+        {/* <Route path="/Contact" exact component={Contact} /> */}
+        <Route exact path="/" component={Home} />
+        <Route exact path="/posts" >
+          <Posts message="Posts"/>
+        </Route>
+        <Route  path="/posts/:post_id" component={Post}/>
       </Switch>
 
-      <MainFooter/>
-      {/* <Route component={MainFooter}/> */}
+     
     </>
   );
 }
