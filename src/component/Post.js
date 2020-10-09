@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { deletePost } from '../redux/actions/actions';
+// import { useSelector, useDispatch } from "react-redux";
+import { deletePost } from '../context/actions/actions';
+
+import { BlogContext } from '../context/BlogContext'
 
 export default function Post() {
   const { post_id } = useParams();
@@ -9,10 +11,14 @@ export default function Post() {
 
   const history = useHistory();
 
-  const post = useSelector((state) => state.posts.find((p) => p.id === id));
+  // const post = useSelector((state) => state.posts.find((p) => p.id === id));
+
+  const { blogState, dispatch } = useContext(BlogContext);
+  const post = blogState.posts.find((p) => p.id === id);
+
   console.log(post);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const postComponent =
     post !== undefined ? (
