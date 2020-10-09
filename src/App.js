@@ -2,8 +2,8 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Nav from "./component/Nav";
 import Home from './component/Home'
-import Posts from './component/Posts'
-import Post from './component/Post';
+import Posts from './component/classBase/Posts'
+import Post from './component/classBase/Post';
 
 function App() {
   return (
