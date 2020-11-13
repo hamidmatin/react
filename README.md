@@ -6,6 +6,9 @@
 
 [کالج فناوری اطلاعات ایران](http://iranitcollege.ir/)
 
+[اینستاگرام](https://www.instagram.com/iranitcollege/)
+
 [گروه تلگرام (@iranitcollege_g)](https://t.me/iranitcollege_g)
 
 [کانال تلگرام (@iranitcollege)](https://t.me/iranitcollege)
+
